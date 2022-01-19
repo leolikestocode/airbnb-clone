@@ -2,7 +2,8 @@ import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import { GlobeAltIcon, MenuIcon, SearchIcon } from "@heroicons/react/outline";
 import { UserCircleIcon, UsersIcon } from "@heroicons/react/solid";
-import { DateRangePicker, RangeKeyDict, Range } from "react-date-range";
+import { DateRangePicker, RangeKeyDict } from "react-date-range";
+import { signIn } from "next-auth/react";
 
 import { Logo, LogoShorter } from "../lib/icons";
 import { Context } from "../context/ContextProvider";
@@ -13,6 +14,18 @@ function Header() {
   const { topSearch, setTopSearch, date, setDate } = useContext(Context);
   const [guests, setGuests] = useState(1);
   const logoColor = router.pathname === "/" ? "white" : "red";
+
+  const searchPlaces = () => {
+    router.push({
+      pathname: "/places",
+      query: {
+        search: topSearch,
+        startDate: date.startDate?.toISOString(),
+        endDate: date.endDate?.toISOString(),
+        guests,
+      },
+    });
+  };
 
   return (
     <header>
@@ -61,8 +74,9 @@ function Header() {
                   />
                 </div>
                 <button
-                  onClick={() => router.push("/places")}
-                  className="bg-green-500 text-white py-2 px-4 rounded-full"
+                  onClick={searchPlaces}
+                  className="bg-green-500 text-white py-2 px-4 rounded-full disabled:bg-gray-500"
+                  disabled={topSearch.length < 3}
                 >
                   Confirm
                 </button>
@@ -85,7 +99,10 @@ function Header() {
           <GlobeAltIcon className="text-white db w-6 hidden md:static" />
           <div className="flex rounded-full bg-white p-2">
             <MenuIcon className="text-gray-500 w-5" />
-            <UserCircleIcon className="text-gray-500 h-7 ml-2" />
+            <UserCircleIcon
+              className="text-gray-500 h-7 ml-2"
+              onClick={() => signIn()}
+            />
           </div>
         </div>
       </div>
