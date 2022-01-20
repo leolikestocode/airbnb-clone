@@ -11,10 +11,10 @@ const data: IPlace[] = [
     description:
       "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms · Wifi · Kitchen · Free parking · Washing Machine",
     star: 4.73,
-    guests: 1,
+    guests: 4,
     price: "£30",
-    long: -0.0022275,
-    lat: 51.5421655,
+    long: -45.7026917,
+    lat: -23.7010556,
     reviews: 3,
   },
   {
@@ -26,8 +26,8 @@ const data: IPlace[] = [
     star: 4.3,
     guests: 4,
     price: "£40",
-    long: -0.095091,
-    lat: 51.48695,
+    long: -45.5687767,
+    lat: -23.7659544,
     reviews: 15,
   },
   {
@@ -42,6 +42,19 @@ const data: IPlace[] = [
     long: -0.135638,
     lat: 51.521916,
     reviews: 12,
+  },
+  {
+    img: "https://a0.muscache.com/im/pictures/361472da-2f2c-4659-84c1-dc5c0061abc7.jpg?im_w=720",
+    location: "Private room in center of London",
+    title: "House in São Sebastião",
+    description:
+      "2 guest · 5 bedroom · 5 beds · 3 bathrooms · Free parking · Washing Machine",
+    star: 4.8,
+    guests: 2,
+    price: "£15",
+    long: -0.135638,
+    lat: 52.521916,
+    reviews: 42,
   },
   {
     img: "https://a0.muscache.com/im/pictures/26261edc-e7e4-4f97-b32d-d1e966a6fbc2.jpg?im_w=720",
@@ -89,7 +102,7 @@ const data: IPlace[] = [
     description:
       "3 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen · Free parking · Washing Machine",
     star: 3.85,
-    guests: 4,
+    guests: 1,
     price: "£90",
     long: -0.109889,
     lat: 51.521245,

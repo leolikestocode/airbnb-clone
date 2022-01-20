@@ -25,6 +25,7 @@ function Header() {
         guests,
       },
     });
+    setOpenCalendar(false);
   };
 
   return (

@@ -11,4 +11,13 @@ declare module "*" {
     lat: number;
     reviews: number;
   }
+
+  interface ICoordinates {
+    latitude: number;
+    longitude: number;
+  }
+
+  interface IViewport extends ICoordinates {
+    zoom: number;
+  }
 }
