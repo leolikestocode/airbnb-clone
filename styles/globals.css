@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media (min-width: 768px) {
+  .placeContainer {
+    width: calc(100% - 316px);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}

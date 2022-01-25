@@ -48,8 +48,8 @@ function Map({ places }: { places: IPlace[] }) {
         <Marker
           longitude={selectedLocation.longitude}
           latitude={selectedLocation.latitude}
-          offsetLeft={-40}
-          offsetTop={-40}
+          offsetLeft={-20}
+          offsetTop={-55}
         >
           <p className="text-sm cursor-pointer text-white bg-gray-900 p-1">
             {
@@ -57,7 +57,7 @@ function Map({ places }: { places: IPlace[] }) {
                 (p) =>
                   p.lat === selectedLocation.latitude &&
                   p.long === selectedLocation.longitude
-              )?.title
+              )?.price
             }
           </p>
         </Marker>

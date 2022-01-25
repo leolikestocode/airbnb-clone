@@ -13,7 +13,10 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
       <Head>
         <title>Airbnb clone</title>
         <meta name="description" content="Airbnb clone with nextjs" />
-        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="icon"
+          href="https://a0.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico"
+        />
       </Head>
       <ContextProvider>
         <Component {...pageProps} />

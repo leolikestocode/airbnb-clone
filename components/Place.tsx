@@ -1,24 +1,42 @@
 import { StarIcon } from "@heroicons/react/solid";
+import { useContext, useEffect } from "react";
 
+import { Context } from "../context/ContextProvider";
 import { IPlace } from "../../types/general";
 
 function Place({ place }: { place: IPlace }) {
+  const { selectedLocation } = useContext(Context);
+  const isSelectedLocation =
+    place.lat === selectedLocation.latitude &&
+    place.long === selectedLocation.longitude;
+
+  useEffect(() => {
+    const querySelected = document.querySelector(
+      '[data-place-selected="true"]'
+    );
+    window.scrollTo(0, querySelected?.offsetTop - 150);
+  }, [selectedLocation]);
+
   return (
-    <div className="flex justify-between py-8 border-b border-grey-500 box-content">
-      <div className="lg:max-w-[300px] lg:h-[200px] rounded-xl overflow-hidden w-[inherit] relative">
-        <div className="w-[300px] text-[0px]">s</div>
+    <div
+      className={`flex flex-col lg:flex-row justify-between py-8 border-b border-grey-500 box-content duration-150 ease-out ${
+        isSelectedLocation ? "scale-100" : "scale-95"
+      }`}
+      data-place-selected={isSelectedLocation}
+    >
+      <div className="w-full h-[200px] lg:max-w-[300px] rounded-xl overflow-hidden lg:w-[inherit] relative">
+        <div className="lg:w-[300px] text-[0px]">s</div>
         <img
           src={place.img}
           alt={place.title}
-          className="w-[300px] h-[200px] object-cover absolute"
+          className="lg:w-[300px] w-full h-[200px] object-cover absolute"
         />
       </div>
-      <div
-        className="flex flex-col md:justify-between"
-        style={{ width: "calc(100% - 316px)" }}
-      >
+      <div className="placeContainer flex flex-col md:justify-between">
         <div>
-          <p>{place.title}</p>
+          <p className={`${isSelectedLocation ? "font-bold" : ""}`}>
+            {place.title}
+          </p>
           <div className="border-b border-gray-400 w-6 my-4"></div>
           <p className="text-sm text-gray-400">{place.description}</p>
         </div>

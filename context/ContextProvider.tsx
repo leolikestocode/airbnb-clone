@@ -1,6 +1,7 @@
 import { createContext, ReactElement, useState } from "react";
 import { addDays } from "date-fns";
 import { Range } from "react-date-range";
+import { useRouter } from "next/router";
 
 import { ICoordinates } from "../../types/general";
 import { defaultCoordinates } from "../lib/helpers";
@@ -30,7 +31,8 @@ export const Context = createContext<IContext>({
 });
 
 function ContextProvider({ children }: { children: ReactElement }) {
-  const [topSearch, setTopSearch] = useState("");
+  const router = useRouter();
+  const [topSearch, setTopSearch] = useState(router.query.search || "");
   const [date, setDate] = useState<Range>(rangeDate);
   const [selectedLocation, setSelectedLocation] =
     useState<ICoordinates>(defaultCoordinates);
